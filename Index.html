@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Educador/a Infantil</title>
+    <style>
+        /* Estilos CSS integrados */
+        :root {
+            --color-primario: #4CA1AF;
+            --color-secundario: #C4E0E5;
+            --color-acento: #FF9A9E;
+            --color-texto: #333333;
+            --color-fondo: #F9F9F9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-primario);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-acento);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--color-primario);
+            border-bottom: 2px solid var(--color-acento);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Galería de actividades */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .tarjeta-actividad {
+            background-color: var(--color-fondo);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .tarjeta-actividad img {
+            max-width: 100%;
+            border-radius: 5px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        /* Lista de experiencia */
+        .experiencia-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .experiencia-item h3 {
+            margin-bottom: 0.2rem;
+            color: #555;
+        }
+
+        .fecha {
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: var(--color-primario);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .btn-contacto {
+            display: inline-block;
+            background-color: var(--color-acento);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .btn-contacto:hover {
+            background-color: #ff7b81;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>[Tu Nombre Aquí]</h1>
+        <p>Educador/a Infantil | Pasión por el desarrollo temprano</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#proyectos">Proyectos y Actividades</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <section id="sobre-mi">
+            <h2>Sobre mí y mi filosofía</h2>
+            <p>¡Hola! Soy un/a educador/a comprometido/a con crear un entorno seguro, estimulante y amoroso para los niños. Mi filosofía se basa en el aprendizaje a través del juego (<em>Spielbasiertes Lernen</em>) y el fomento de la autonomía.</p>
+            <p><strong>Idiomas:</strong> Español (Nativo), Alemán (B2), Inglés (B2).</p>
+            <ul>
+                <li>Enfoque en la educación respetuosa.</li>
+                <li>Habilidad para adaptar actividades a diferentes etapas de desarrollo.</li>
+                <li>Experiencia en comunicación fluida y empática con los padres (Elternarbeit).</li>
+            </ul>
+        </section>
+
+        <section id="experiencia">
+            <h2>Experiencia y Formación</h2>
+            
+            <div class="experiencia-item">
+                <h3>Educador/a en Prácticas - Kita Sonnenblume</h3>
+                <span class="fecha">Septiembre 2023 - Febrero 2024 | Leipzig, Alemania</span>
+                <p>Asistencia en la planificación de rutinas diarias, acompañamiento durante el tiempo de juego libre y organización de la asamblea matutina (Morgenkreis).</p>
+            </div>
+
+            <div class="experiencia-item">
+                <h3>Grado / FP en Educación Infantil</h3>
+                <span class="fecha">Septiembre 2021 - Junio 2023 | Instituto de Educación XYZ</span>
+                <p>Formación teórica y práctica en psicología infantil, didáctica, primeros auxilios y desarrollo psicomotor.</p>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2>Ejemplos de Actividades</h2>
+            <p>A continuación, muestro algunos ejemplos de actividades y manualidades que he diseñado para promover la motricidad fina y la creatividad en los niños.</p>
+            
+            <div class="galeria">
+                <div class="tarjeta-actividad">
+                    <img src="https://via.placeholder.com/300x200?text=Manualidad+Oto%C3%B1o" alt="Manualidad de otoño">
+                    <h4>Manualidades de Temporada</h4>
+                    <p>Uso de hojas secas y materiales naturales (Naturmaterialien) para explorar texturas.</p>
+                </div>
+                <div class="tarjeta-actividad">
+                    <img src="https://via.placeholder.com/300x200?text=Juego+Sensorial" alt="Bandeja sensorial">
+                    <h4>Bandejas Sensoriales</h4>
+                    <p>Fomento de la concentración y motricidad fina mediante el uso de arroz teñido y legumbres.</p>
+                </div>
+                <div class="tarjeta-actividad">
+                    <img src="https://via.placeholder.com/300x200?text=M%C3%BAsica+y+Movimiento" alt="Instrumentos musicales">
+                    <h4>Música y Movimiento</h4>
+                    <p>Introducción de instrumentos de percusión básicos durante el Morgenkreis.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <h2>¿Hablamos?</h2>
+        <p>Me encantaría formar parte de vuestro equipo y contribuir al bienestar de los niños en su Kita.</p>
+        <p>Email: <a href="mailto:tuemail@ejemplo.com" style="color: white; text-decoration: underline;">tuemail@ejemplo.com</a> | Teléfono: +49 123 456 789</p>
+        <a href="mailto:tuemail@ejemplo.com" class="btn-contacto">Enviar un mensaje</a>
+    </footer>
+
+</body>
+</html>
