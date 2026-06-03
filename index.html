@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Portfolio - Kita</title>
+    <title>Ich-Mappe - Kita Portfolio</title>
     <style>
-        /* Diseño visual de la carpeta */
+        /* CSS Design (Scrapbook Style) */
         :root {
             --color-fondo: #f4ede4;
             --color-cinta: #ff6b6b;
@@ -57,7 +57,6 @@
             position: relative;
         }
 
-        /* Indicador visual de que un área es editable */
         [contenteditable="true"]:hover {
             background-color: #fff9c4;
             outline: 1px dashed #fbc02d;
@@ -175,7 +174,7 @@
             border-bottom: 1px dashed #ccc;
         }
 
-        /* Estilos para cuando se imprime o se guarda como PDF */
+        /* Print Settings */
         @media print {
             body {
                 background: white;
@@ -187,7 +186,7 @@
                 padding: 0;
             }
             .controles, .btn-subir {
-                display: none !important; /* Oculta botones al imprimir */
+                display: none !important;
             }
             [contenteditable="true"]:hover {
                 background-color: transparent;
@@ -199,88 +198,96 @@
 <body>
 
     <div class="controles">
-        <button class="btn-imprimir" onclick="window.print()">🖨️ Guardar como PDF / Imprimir</button>
-        <p style="font-size: 0.9rem; color: #666;">Haz clic en cualquier texto para editarlo. Usa los botones naranjas para cambiar las fotos.</p>
+        <button class="btn-imprimir" onclick="window.print()">🖨️ Als PDF speichern / Drucken</button>
+        <p style="font-size: 0.9rem; color: #666;">Klicke auf den Text, um ihn zu bearbeiten. Nutze die Buttons, um Fotos hochzuladen.</p>
     </div>
 
     <div class="carpeta">
         
-        <!-- PORTADA -->
         <div class="portada">
             <div class="foto-container">
-                <img id="img-perfil" src="https://via.placeholder.com/200x200?text=Sube+una+foto" alt="Foto del Niño" class="foto-perfil">
+                <img id="img-perfil" src="https://via.placeholder.com/200x200?text=Foto" alt="Foto des Kindes" class="foto-perfil">
                 <input type="file" id="input-perfil" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-perfil')">
-                <label for="input-perfil" class="btn-subir">📷 Cambiar foto</label>
+                <label for="input-perfil" class="btn-subir">📷 Foto ändern</label>
             </div>
             
-            <h1 contenteditable="true">Este soy yo: [Nombre del niño]</h1>
-            <p><strong>Mi grupo:</strong> <span contenteditable="true">Las Abejitas 🐝</span></p>
-            <p><strong>Educador/a:</strong> <span contenteditable="true">María (Kita Leipzig)</span></p>
-            <p contenteditable="true"><em>Este es mi libro mágico. Aquí guardamos todo lo que voy descubriendo.</em></p>
+            <h1 contenteditable="true">Das bin ich: [Name]</h1>
+            <p><strong>Meine Gruppe:</strong> <span contenteditable="true">[Gruppenname]</span></p>
+            <p><strong>Meine Erzieherin / Mein Erzieher:</strong> <span contenteditable="true">[Name]</span></p>
         </div>
 
-        <!-- SECCIÓN 1: DAS BIN ICH & MEINE FAMILIE -->
         <section>
-            <h2>Mi Familia y Yo (Das bin ich & Meine Familie)</h2>
-            <p contenteditable="true">¡Hola! Me llamo [Nombre]. Tengo [X] años. Lo que más me gusta hacer en la Kita es...</p>
+            <h2>Meine Familie</h2>
+            <p contenteditable="true">[Hier Text über die Familie und das Umfeld des Kindes eingeben...]</p>
             
             <div class="grid-polaroid">
                 <div class="polaroid">
                     <div class="foto-container">
-                        <img id="img-fam1" src="https://via.placeholder.com/200x180?text=Foto+1" alt="Foto 1">
+                        <img id="img-fam1" src="https://via.placeholder.com/200x180?text=Foto" alt="Familienfoto">
                         <input type="file" id="input-fam1" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-fam1')">
-                        <label for="input-fam1" class="btn-subir">📷 Cambiar</label>
+                        <label for="input-fam1" class="btn-subir">📷 Foto ändern</label>
                     </div>
-                    <p contenteditable="true">Mamá, Papá y yo</p>
+                    <p contenteditable="true">[Bildunterschrift...]</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Lerngeschichten</h2>
+
+            <div class="lerngeschichte">
+                <h3 contenteditable="true">[Titel der Lerngeschichte]</h3>
+                <p><strong>Datum:</strong> <span contenteditable="true">[TT.MM.JJJJ]</span></p>
+                <p contenteditable="true">Liebe/r [Name],</p>
+                <p contenteditable="true">[Hier die Lerngeschichte schreiben. Was hast du beobachtet? Wie hat das Kind gehandelt?]</p>
+                <div class="firma-educador" contenteditable="true">Deine Erzieherin / Dein Erzieher, [Name]</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Was ich gesagt habe (O-Töne)</h2>
+            <div class="cita-nino">
+                <span contenteditable="true">"[Hier ein wörtliches Zitat des Kindes eintragen]"</span><br>
+                <span style="font-size: 0.9rem; color: #666;" contenteditable="true">- [Situation / Datum]</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Das kann ich schon</h2>
+            
+            <ul class="lista-logros" contenteditable="true">
+                <li>[Erfolg / Fähigkeit 1...]</li>
+                <li>[Erfolg / Fähigkeit 2...]</li>
+                <li>[Erfolg / Fähigkeit 3...]</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Meine Kunstwerke & Projekte</h2>
+            <p contenteditable="true">[Hier einen kurzen Text zu den Projekten eingeben...]</p>
+
+            <div class="grid-polaroid">
+                <div class="polaroid">
+                    <div class="foto-container">
+                        <img id="img-kunst1" src="https://via.placeholder.com/200x180?text=Foto" alt="Kunstwerk">
+                        <input type="file" id="input-kunst1" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-kunst1')">
+                        <label for="input-kunst1" class="btn-subir">📷 Foto ändern</label>
+                    </div>
+                    <p contenteditable="true">[Titel des Kunstwerks]</p>
                 </div>
                 <div class="polaroid">
                     <div class="foto-container">
-                        <img id="img-fam2" src="https://via.placeholder.com/200x180?text=Foto+2" alt="Foto 2">
-                        <input type="file" id="input-fam2" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-fam2')">
-                        <label for="input-fam2" class="btn-subir">📷 Cambiar</label>
+                        <img id="img-kunst2" src="https://via.placeholder.com/200x180?text=Foto" alt="Kunstwerk">
+                        <input type="file" id="input-kunst2" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-kunst2')">
+                        <label for="input-kunst2" class="btn-subir">📷 Foto ändern</label>
                     </div>
-                    <p contenteditable="true">Mi juguete favorito</p>
+                    <p contenteditable="true">[Titel des Kunstwerks]</p>
                 </div>
             </div>
-        </section>
-
-        <!-- SECCIÓN 2: LERNGESCHICHTEN -->
-        <section>
-            <h2>Mis Historias de Aprendizaje (Lerngeschichten)</h2>
-
-            <div class="lerngeschichte">
-                <h3 contenteditable="true">Título de la historia 🌟</h3>
-                <p><strong>Fecha:</strong> <span contenteditable="true">Día / Mes / Año</span></p>
-                <p contenteditable="true">Querido [Nombre],</p>
-                <p contenteditable="true">Hoy te he estado observando mientras jugabas en... (Escribe aquí la historia de aprendizaje centrada en los recursos y logros del niño).</p>
-                <p contenteditable="true">Me ha encantado ver cómo solucionaste el problema. ¡Eres un/a gran investigador/a!</p>
-                <div class="firma-educador" contenteditable="true">Tu educadora, [Nombre]</div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 3: O-TÖNE -->
-        <section>
-            <h2>Mis Palabras (Was ich gesagt habe)</h2>
-            <div class="cita-nino">
-                <span contenteditable="true">"Escribe aquí alguna frase literal y divertida que haya dicho el niño."</span><br>
-                <span style="font-size: 0.9rem; color: #666;" contenteditable="true">- Contexto o fecha (ej. En el jardín, Mayo)</span>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 4: DAS KANN ICH SCHON -->
-        <section>
-            <h2>¡Mira lo que ya sé hacer! (Das kann ich schon)</h2>
-            
-            <ul class="lista-logros" contenteditable="true">
-                <li>Escribe aquí un logro reciente...</li>
-                <li>Escribe otro logro aquí...</li>
-                <li>Otro hito superado...</li>
-            </ul>
         </section>
 
     </div>
 
-    <!-- Script para que las imágenes se actualicen al subirlas -->
     <script>
         function cargarImagen(event, idImagen) {
             var reader = new FileReader();
