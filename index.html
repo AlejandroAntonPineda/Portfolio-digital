@@ -3,326 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Kita - Nuestro Grupo</title>
+    <title>Mi Portfolio - Kita</title>
     <style>
-        /* CONFIGURACIÓN DE COLORES Y FUENTES */
+        /* Diseño estilo "Scrapbook" o Carpeta de Recuerdos */
         :root {
-            --color-fondo: #fcf9f2;
-            --color-primario: #FF9F1C; /* Naranja cálido */
-            --color-secundario: #2EC4B6; /* Verde agua */
-            --color-texto: #333333;
-            --color-tarjetas: #ffffff;
-            --color-alerta: #ffedea;
+            --color-fondo: #f4ede4; /* Papel crema */
+            --color-cinta: #ff6b6b; /* Rojo suave */
+            --color-polaroid: #ffffff;
+            --color-texto: #4a4a4a;
+            --fuente-titulo: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            --fuente-texto: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--fuente-texto);
             background-color: var(--color-fondo);
+            background-image: radial-gradient(#d6caba 1px, transparent 1px);
+            background-size: 20px 20px;
             color: var(--color-texto);
             margin: 0;
-            padding: 0;
+            padding: 20px;
             line-height: 1.6;
         }
 
-        /* 1. INICIO Y CABECERA */
-        header {
-            background-color: var(--color-primario);
-            color: white;
-            padding: 3rem 1rem 2rem 1rem;
-            text-align: center;
-            border-bottom: 8px solid var(--color-secundario);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0 0 10px 0;
-        }
-
-        .aviso-privacidad {
-            background-color: var(--color-alerta);
-            color: #d9534f;
-            max-width: 800px;
-            margin: -20px auto 20px auto;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px dashed #d9534f;
-            text-align: center;
-            font-weight: bold;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* MENÚ DE NAVEGACIÓN */
-        nav {
-            text-align: center;
-            padding: 15px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--color-primario);
-            font-weight: bold;
-            margin: 0 15px;
-            font-size: 1.1rem;
-        }
-
-        nav a:hover {
-            color: var(--color-secundario);
-        }
-
-        /* CONTENEDOR GENERAL */
-        .contenedor {
-            max-width: 1000px;
+        .carpeta {
+            max-width: 850px;
             margin: 0 auto;
-            padding: 20px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        section {
-            background-color: var(--color-tarjetas);
-            border-radius: 12px;
-            padding: 30px;
+        /* Efecto de encuadernación a la izquierda */
+        .carpeta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            bottom: 0;
+            width: 2px;
+            background: #e0d5c1;
+            border-left: 2px dashed #c4b69c;
+        }
+
+        .portada {
+            text-align: center;
+            border-bottom: 4px solid var(--color-cinta);
+            padding-bottom: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .portada h1 {
+            font-family: var(--fuente-titulo);
+            font-size: 3rem;
+            color: var(--color-cinta);
+            margin: 10px 0;
+        }
+
+        .foto-perfil {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--color-polaroid);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transform: rotate(-3deg);
         }
 
         h2 {
-            color: var(--color-secundario);
-            text-align: center;
+            font-family: var(--fuente-titulo);
+            color: #2ea3f2;
             font-size: 2rem;
-            margin-top: 0;
-            border-bottom: 3px solid #eee;
+            margin-top: 40px;
+            border-bottom: 2px solid #eee;
             padding-bottom: 10px;
         }
 
-        /* 2. NUESTRO GRUPO (Tarjetas de equipo) */
-        .grid-equipo {
+        /* Estilo para fotos tipo Polaroid */
+        .grid-polaroid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
-        .tarjeta-educador {
+        .polaroid {
+            background: var(--color-polaroid);
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             text-align: center;
-            padding: 15px;
-            background-color: var(--color-fondo);
-            border-radius: 10px;
+            font-family: var(--fuente-titulo);
+            transform: rotate(2deg);
+            transition: transform 0.3s;
         }
 
-        .tarjeta-educador img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+        .polaroid:nth-child(even) {
+            transform: rotate(-2deg);
+        }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 10;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 180px;
             object-fit: cover;
-            border: 4px solid var(--color-secundario);
         }
 
-        /* 3. NUESTRO DÍA A DÍA */
-        .horario {
+        /* Historias de Aprendizaje (Lerngeschichten) */
+        .lerngeschichte {
+            background-color: #fdfae1;
+            padding: 25px;
+            border-left: 5px solid #f9ca24;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .lerngeschichte h3 {
+            margin-top: 0;
+            color: #f0932b;
+            font-family: var(--fuente-titulo);
+        }
+
+        .firma-educador {
+            text-align: right;
+            font-style: italic;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        /* Citas del niño (O-Töne) */
+        .cita-nino {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+            margin: 20px 0;
+            font-family: var(--fuente-titulo);
+            font-size: 1.2rem;
+            text-align: center;
+            color: #1565c0;
+        }
+
+        .cita-nino::before {
+            content: '“';
+            font-size: 4rem;
+            color: rgba(21, 101, 192, 0.2);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+
+        /* Lista "Das kann ich schon" */
+        .lista-logros {
             list-style: none;
             padding: 0;
         }
 
-        .horario li {
-            background: #f9f9f9;
-            margin-bottom: 10px;
-            padding: 15px;
-            border-left: 5px solid var(--color-primario);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
+        .lista-logros li {
+            padding: 10px 0;
+            font-size: 1.2rem;
+            border-bottom: 1px dashed #ccc;
         }
 
-        .horario-hora {
-            font-weight: bold;
-            color: var(--color-primario);
-            width: 120px;
-            flex-shrink: 0;
+        .lista-logros li::before {
+            content: '⭐';
+            margin-right: 10px;
         }
 
-        /* 4. PROYECTOS Y ACTIVIDADES */
-        .proyecto {
-            margin-bottom: 30px;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .proyecto img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .proyecto-contenido {
-            padding: 20px;
-        }
-
-        .etiqueta-pedagogica {
-            background-color: #e0f7f4;
-            color: #0b8c7c;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        /* 5. RINCÓN DE FAMILIAS */
-        .tablon {
-            background-color: #fffde7;
-            border: 2px dashed #fbc02d;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* 6. PIE DE PÁGINA Y CONTACTO */
-        footer {
-            background-color: #333;
-            color: white;
+        .nota-privacidad {
+            margin-top: 50px;
             text-align: center;
-            padding: 30px 10px;
-            margin-top: 40px;
-        }
-
-        footer p {
-            margin: 5px 0;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. CABECERA Y AVISO DE PRIVACIDAD -->
-    <header>
-        <h1>🐝 Grupo Las Abejitas</h1>
-        <p>Creciendo juntos cada día - Diario de nuestra Kita</p>
-    </header>
+    <div class="carpeta">
+        
+        <!-- PORTADA -->
+        <div class="portada">
+            <img src="https://via.placeholder.com/200x200?text=Foto+del+Niño" alt="Foto de Leo" class="foto-perfil">
+            <h1>Este soy yo: Leo</h1>
+            <p><strong>Mi grupo:</strong> Las Abejitas 🐝</p>
+            <p><strong>Educadora que me acompaña:</strong> María</p>
+            <p><em>Este es mi libro mágico. Aquí guardamos todo lo que voy descubriendo en la Kita.</em></p>
+        </div>
 
-    <div class="aviso-privacidad">
-        🔒 Espacio Privado: Las imágenes de este portal son exclusivas para las familias del grupo. Por favor, no las compartáis en redes sociales.
-    </div>
-
-    <nav>
-        <a href="#grupo">Nuestro Grupo</a>
-        <a href="#rutina">Día a Día</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#familias">Rincón Familiar</a>
-    </nav>
-
-    <div class="contenedor">
-
-        <!-- 2. NUESTRO GRUPO -->
-        <section id="grupo">
-            <h2>Nuestra Pequeña Familia</h2>
-            <p style="text-align: center;">Este es el equipo que acompaña a vuestros hijos todos los días con mucho cariño.</p>
+        <!-- SECCIÓN 1: DAS BIN ICH & MEINE FAMILIE -->
+        <section>
+            <h2>Mi Familia y Yo (Das bin ich & Meine Familie)</h2>
+            <p>¡Hola! Me llamo Leo. Tengo 3 años. Lo que más me gusta hacer en la Kita es jugar con los bloques magnéticos y montar en el Bobby Car.</p>
             
-            <div class="grid-equipo">
-                <div class="tarjeta-educador">
-                    <!-- Cambiar el enlace de la imagen por la foto real -->
-                    <img src="https://via.placeholder.com/150" alt="Foto Educador 1">
-                    <h3>María</h3>
-                    <p>Educadora Principal</p>
-                    <p><em>"Me encanta ver cómo descubren el mundo a través del arte."</em></p>
+            <div class="grid-polaroid">
+                <div class="polaroid">
+                    <img src="https://via.placeholder.com/200x180?text=Foto+Familiar" alt="Mi familia">
+                    <p>Mamá, Papá y yo en el parque</p>
                 </div>
-                <div class="tarjeta-educador">
-                    <img src="https://via.placeholder.com/150" alt="Foto Educador 2">
-                    <h3>Laura</h3>
-                    <p>Estudiante / Prácticas</p>
-                    <p><em>"Mi momento favorito es cuando cantamos todos juntos."</em></p>
+                <div class="polaroid">
+                    <img src="https://via.placeholder.com/200x180?text=Foto+Mascota" alt="Mi perro">
+                    <p>Mi perro Bruno</p>
                 </div>
             </div>
         </section>
 
-        <!-- 3. NUESTRO DÍA A DÍA -->
-        <section id="rutina">
-            <h2>Nuestra Rutina (Die Tagesstruktur)</h2>
-            <p>La rutina da seguridad a los peques. Saber qué viene después les ayuda a estar tranquilos y felices.</p>
+        <!-- SECCIÓN 2: LERNGESCHICHTEN (Historias de aprendizaje) -->
+        <section>
+            <h2>Mis Historias de Aprendizaje (Lerngeschichten)</h2>
+            <p><em>(Textos escritos por los educadores dirigidos directamente al niño, documentando sus procesos).</em></p>
+
+            <div class="lerngeschichte">
+                <h3>El gran constructor de puentes 🌉</h3>
+                <p><strong>Fecha:</strong> 15 de Octubre de 2023</p>
+                <p>Querido Leo,</p>
+                <p>Hoy te he estado observando en el rincón de construcción. Estabas muy concentrado intentando hacer un puente para que pasaran tus coches. Al principio, los bloques de madera se caían porque ponías coches muy pesados encima. Noté que te frustraste un poquito, pero no te rendiste.</p>
+                <p>Fuiste a buscar bloques más anchos para la base y dijiste: "¡Ahora es fuerte!". Y tenías razón, tu coche de bomberos cruzó sin problemas. Me ha encantado ver tu paciencia y cómo has resuelto el problema tú solito. ¡Eres un gran constructor!</p>
+                <div class="firma-educador">Tu educadora, María</div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: O-TÖNE (Lo que dice el niño) -->
+        <section>
+            <h2>Mis Palabras (Was ich gesagt habe)</h2>
+            <p>A veces digo cosas muy divertidas o interesantes que mis educadoras apuntan para no olvidarlas.</p>
             
-            <ul class="horario">
-                <li>
-                    <div class="horario-hora">08:00 - 09:00</div>
-                    <div><strong>Llegada y Juego Libre.</strong> Los niños eligen a qué rincón ir (construcción, cuentos, casita).</div>
-                </li>
-                <li>
-                    <div class="horario-hora">09:00 - 09:30</div>
-                    <div><strong>Morgenkreis.</strong> Nos saludamos, contamos quién falta y cantamos.</div>
-                </li>
-                <li>
-                    <div class="horario-hora">09:30 - 11:30</div>
-                    <div><strong>Proyectos y Patio.</strong> Hacemos manualidades, experimentos o salimos al jardín.</div>
-                </li>
-                <li>
-                    <div class="horario-hora">11:30 - 12:30</div>
-                    <div><strong>Comida.</strong> Almorzamos todos juntos fomentando la autonomía.</div>
-                </li>
+            <div class="cita-nino">
+                "Las lombrices no tienen manos, por eso se abrazan con todo el cuerpo."<br>
+                <span style="font-size: 0.9rem; color: #666;">- Buscando bichos en el jardín, Mayo 2023</span>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: DAS KANN ICH SCHON (Mis hitos) -->
+        <section>
+            <h2>¡Mira lo que ya sé hacer! (Das kann ich schon)</h2>
+            
+            <ul class="lista-logros">
+                <li>¡Ya sé ponerme los zapatos yo solo (aunque a veces van al revés)!</li>
+                <li>Me sirvo agua en el vaso durante el desayuno sin derramar casi nada.</li>
+                <li>Reconozco la primera letra de mi nombre: la "L".</li>
+                <li>Consigo subir hasta lo más alto de la estructura de escalada en el patio.</li>
             </ul>
         </section>
 
-        <!-- 4. PROYECTOS Y ACTIVIDADES -->
-        <section id="proyectos">
-            <h2>Galería de Proyectos</h2>
-            <p>Un pequeño vistazo a lo que hemos estado investigando últimamente. ¡El proceso es más importante que el resultado!</p>
-
-            <!-- Proyecto 1 -->
-            <div class="proyecto">
-                <!-- Cambiar imagen. Recomendación: fotos de manos trabajando, sin caras -->
-                <img src="https://via.placeholder.com/800x300?text=Foto+de+niños+amasando" alt="Niños amasando plastilina">
-                <div class="proyecto-contenido">
-                    <h3>Semana 1: ¡Hacemos nuestra propia plastilina!</h3>
-                    <p>Esta semana nos hemos convertido en cocineros. Hemos mezclado harina, agua, sal y colorante alimentario. Al principio estaba muy pegajoso, pero luego conseguimos una masa perfecta.</p>
-                    <span class="etiqueta-pedagogica">💡 ¿Qué aprendemos? Motricidad fina, texturas y medidas.</span>
-                </div>
-            </div>
-
-            <!-- Proyecto 2 -->
-            <div class="proyecto">
-                <img src="https://via.placeholder.com/800x300?text=Foto+de+hojas+de+otoño" alt="Mural de otoño">
-                <div class="proyecto-contenido">
-                    <h3>Semana 2: Los colores del Otoño</h3>
-                    <p>Salimos a pasear por los alrededores de la Kita y recolectamos hojas caídas. Después, en clase, hicimos un mural gigante usando rodillos y pintura de dedos.</p>
-                    <span class="etiqueta-pedagogica">💡 ¿Qué aprendemos? Observación del entorno natural y creatividad.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. RINCÓN DE LAS FAMILIAS -->
-        <section id="familias">
-            <h2>Rincón de las Familias (Eltern-Ecke)</h2>
+        <!-- SECCIÓN 5: MEINE KUNSTWERKE (Mis obras de arte) -->
+        <section>
+            <h2>Mis Obras de Arte (Meine Kunstwerke)</h2>
+            <p>Aquí guardamos fotos de mis manualidades y dibujos favoritos.</p>
             
-            <div class="tablon">
-                <h3>📌 Tablón de Anuncios</h3>
-                <ul>
-                    <li><strong>Ropa de invierno:</strong> Por favor, revisad las taquillas y traed guantes y gorros marcados con el nombre.</li>
-                    <li><strong>Día del farolillo (Laternenfest):</strong> Será el próximo viernes a las 17:00h en el patio trasero.</li>
-                </ul>
+            <div class="grid-polaroid">
+                <div class="polaroid">
+                    <img src="https://via.placeholder.com/200x180?text=Pintura+de+dedos" alt="Mi dibujo">
+                    <p>Pintura con los dedos (Azul y Amarillo hacen Verde)</p>
+                </div>
             </div>
-
-            <h3>🎵 Canción de la semana</h3>
-            <p>Estamos cantando mucho esta canción en el Morgenkreis. Podéis practicarla en casa:</p>
-            <blockquote style="font-style: italic; background: #f4f4f4; padding: 10px; border-left: 4px solid var(--color-secundario);">
-                "Guten Morgen, Guten Morgen,<br>
-                wir winken uns zu.<br>
-                Guten Morgen, Guten Morgen,<br>
-                erst ich und dann du!"
-            </blockquote>
         </section>
+
+        <div class="nota-privacidad">
+            Documento pedagógico confidencial. Creado a través de observación estructurada según el marco pedagógico.
+        </div>
 
     </div>
-
-    <!-- 6. CONTACTO Y PIE DE PÁGINA -->
-    <footer>
-        <h3>¿Necesitáis hablar con nosotras?</h3>
-        <p>📧 Email del grupo: abejitas@nuestrakita.ejemplo</p>
-        <p>📞 Teléfono de la oficina: +49 123 456 789</p>
-        <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">Por favor, usad la app de la Kita para notificar ausencias antes de las 8:30h.</p>
-    </footer>
 
 </body>
 </html>
