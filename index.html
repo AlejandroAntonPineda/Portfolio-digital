@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Educador/a Infantil</title>
+    <title>Portfolio de nuestra Kita - Grupo Las Abejitas</title>
     <style>
-        /* Estilos CSS integrados */
+        /* Paleta de colores cálida y amigable para familias */
         :root {
-            --color-primario: #4CA1AF;
-            --color-secundario: #C4E0E5;
-            --color-acento: #FF9A9E;
-            --color-texto: #333333;
-            --color-fondo: #F9F9F9;
+            --color-principal: #FFB347; /* Naranja suave */
+            --color-secundario: #AEE2FF; /* Azul cielo */
+            --color-acento: #8EE4AF; /* Verde menta */
+            --color-texto: #4A4A4A;
+            --color-fondo: #FFFDF9; /* Crema muy claro */
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Comic Sans MS', 'Verdana', sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--color-fondo);
@@ -24,207 +24,268 @@
         }
 
         header {
-            background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
+            background-color: var(--color-principal);
+            background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
             color: white;
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 3rem 1rem;
+            border-bottom-left-radius: 50% 20px;
+            border-bottom-right-radius: 50% 20px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         header p {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: bold;
         }
 
         nav {
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+            margin-top: 1rem;
+            text-align: center;
         }
 
         nav a {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: white;
+            color: var(--color-principal);
             text-decoration: none;
-            color: var(--color-primario);
+            border-radius: 20px;
             font-weight: bold;
-            transition: color 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
 
         nav a:hover {
-            color: var(--color-acento);
+            transform: scale(1.05);
+            background-color: var(--color-secundario);
+            color: #333;
         }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        section {
-            background-color: white;
+        .seccion {
+            background: white;
             padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--color-acento);
         }
 
         h2 {
-            color: var(--color-primario);
-            border-bottom: 2px solid var(--color-acento);
-            padding-bottom: 0.5rem;
-        }
-
-        /* Galería de actividades */
-        .galeria {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .tarjeta-actividad {
-            background-color: var(--color-fondo);
-            padding: 1rem;
-            border-radius: 8px;
+            color: #E07A5F;
             text-align: center;
-            border: 1px solid #eee;
-        }
-
-        .tarjeta-actividad img {
-            max-width: 100%;
-            border-radius: 5px;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        /* Lista de experiencia */
-        .experiencia-item {
+            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
 
-        .experiencia-item h3 {
-            margin-bottom: 0.2rem;
-            color: #555;
+        /* Rutina diaria */
+        .rutina-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
 
-        .fecha {
-            color: #888;
-            font-size: 0.9rem;
-            font-style: italic;
+        .tarjeta-rutina {
+            background-color: var(--color-secundario);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .tarjeta-rutina h3 {
+            margin: 0 0 1rem 0;
+            color: #333;
+        }
+
+        .tarjeta-rutina .icono {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Galería de Proyectos */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .proyecto {
+            background: var(--color-fondo);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px dashed var(--color-principal);
+        }
+
+        .proyecto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .proyecto-info {
+            padding: 1rem;
+        }
+
+        .proyecto-info h3 {
+            margin-top: 0;
+            color: var(--color-principal);
+        }
+
+        /* Rincón de familias */
+        .recursos-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recursos-list li {
+            background: #F4F1DE;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 5px solid #E07A5F;
         }
 
         footer {
-            background-color: var(--color-primario);
-            color: white;
             text-align: center;
             padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .btn-contacto {
-            display: inline-block;
-            background-color: var(--color-acento);
+            background-color: #333;
             color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
+            font-size: 0.9rem;
         }
 
-        .btn-contacto:hover {
-            background-color: #ff7b81;
+        .nota-privacidad {
+            background-color: #ffeaea;
+            border: 1px solid #ffb3b3;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 2rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>[Tu Nombre Aquí]</h1>
-        <p>Educador/a Infantil | Pasión por el desarrollo temprano</p>
+        <h1>¡Bienvenidos a Las Abejitas! 🐝</h1>
+        <p>Una ventana mágica para que veáis cómo crecemos, jugamos y aprendemos</p>
+        <nav>
+            <a href="#nuestro-dia">Nuestro Día a Día</a>
+            <a href="#proyectos">Galería de Proyectos</a>
+            <a href="#canciones">Canciones y Recursos</a>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#experiencia">Experiencia</a></li>
-            <li><a href="#proyectos">Proyectos y Actividades</a></li>
-        </ul>
-    </nav>
-
     <div class="container">
-        
-        <section id="sobre-mi">
-            <h2>Sobre mí y mi filosofía</h2>
-            <p>¡Hola! Soy un/a educador/a comprometido/a con crear un entorno seguro, estimulante y amoroso para los niños. Mi filosofía se basa en el aprendizaje a través del juego (<em>Spielbasiertes Lernen</em>) y el fomento de la autonomía.</p>
-            <p><strong>Idiomas:</strong> Español (Nativo), Alemán (B2), Inglés (B2).</p>
-            <ul>
-                <li>Enfoque en la educación respetuosa.</li>
-                <li>Habilidad para adaptar actividades a diferentes etapas de desarrollo.</li>
-                <li>Experiencia en comunicación fluida y empática con los padres (Elternarbeit).</li>
-            </ul>
-        </section>
 
-        <section id="experiencia">
-            <h2>Experiencia y Formación</h2>
+        <!-- AVISO DE PRIVACIDAD (Muy importante para Kitas) -->
+        <div class="nota-privacidad">
+            🔒 Espacio privado para familias: Por favor, no compartáis las fotos de esta página en redes sociales para proteger la privacidad de todos los niños del grupo.
+        </div>
+
+        <!-- SECCIÓN: RUTINA DIARIA -->
+        <div id="nuestro-dia" class="seccion">
+            <h2>Así es nuestro día a día ⏰</h2>
+            <p style="text-align: center;">La rutina da seguridad a los peques. Esto es lo que hacemos cuando no estáis:</p>
             
-            <div class="experiencia-item">
-                <h3>Educador/a en Prácticas - Kita Sonnenblume</h3>
-                <span class="fecha">Septiembre 2023 - Febrero 2024 | Leipzig, Alemania</span>
-                <p>Asistencia en la planificación de rutinas diarias, acompañamiento durante el tiempo de juego libre y organización de la asamblea matutina (Morgenkreis).</p>
+            <div class="rutina-grid">
+                <div class="tarjeta-rutina">
+                    <div class="icono">👋</div>
+                    <h3>08:00 - 09:00</h3>
+                    <p><strong>Llegada y Juego Libre:</strong> Nos damos los buenos días y elegimos con qué rincones queremos explorar hoy.</p>
+                </div>
+                <div class="tarjeta-rutina">
+                    <div class="icono">⭕</div>
+                    <h3>09:00 - 09:30</h3>
+                    <p><strong>Morgenkreis (Asamblea):</strong> Cantamos la canción de los buenos días, vemos qué tiempo hace y contamos quién ha venido.</p>
+                </div>
+                <div class="tarjeta-rutina">
+                    <div class="icono">🎨</div>
+                    <h3>09:30 - 11:30</h3>
+                    <p><strong>Proyectos y Patio:</strong> Hacemos manualidades, experimentos o salimos al jardín a mover el cuerpo.</p>
+                </div>
+                <div class="tarjeta-rutina">
+                    <div class="icono">🍲</div>
+                    <h3>11:30 - 12:30</h3>
+                    <p><strong>Comida:</strong> Recogemos la clase juntos, nos lavamos las manos y disfrutamos de un almuerzo en grupo.</p>
+                </div>
             </div>
+        </div>
 
-            <div class="experiencia-item">
-                <h3>Grado / FP en Educación Infantil</h3>
-                <span class="fecha">Septiembre 2021 - Junio 2023 | Instituto de Educación XYZ</span>
-                <p>Formación teórica y práctica en psicología infantil, didáctica, primeros auxilios y desarrollo psicomotor.</p>
-            </div>
-        </section>
+        <!-- SECCIÓN: PROYECTOS Y FOTOS -->
+        <div id="proyectos" class="seccion">
+            <h2>Nuestras Obras de Arte y Descubrimientos 🎨</h2>
+            <p style="text-align: center;">Aquí podéis ver un resumen de lo que hemos estado investigando estas últimas semanas.</p>
 
-        <section id="proyectos">
-            <h2>Ejemplos de Actividades</h2>
-            <p>A continuación, muestro algunos ejemplos de actividades y manualidades que he diseñado para promover la motricidad fina y la creatividad en los niños.</p>
-            
             <div class="galeria">
-                <div class="tarjeta-actividad">
-                    <img src="https://via.placeholder.com/300x200?text=Manualidad+Oto%C3%B1o" alt="Manualidad de otoño">
-                    <h4>Manualidades de Temporada</h4>
-                    <p>Uso de hojas secas y materiales naturales (Naturmaterialien) para explorar texturas.</p>
+                <!-- Proyecto 1 -->
+                <div class="proyecto">
+                    <img src="https://via.placeholder.com/400x250?text=Foto+Hojas+Otono" alt="Niños jugando con hojas">
+                    <div class="proyecto-info">
+                        <h3>🍁 ¡Llegó el Otoño!</h3>
+                        <p>Fuimos al parque a recoger hojas, piñas y castañas. En clase, hemos hecho estampaciones con pintura y hemos creado nuestro propio mural sensorial. ¡Nos encanta cómo crujen las hojas secas!</p>
+                    </div>
                 </div>
-                <div class="tarjeta-actividad">
-                    <img src="https://via.placeholder.com/300x200?text=Juego+Sensorial" alt="Bandeja sensorial">
-                    <h4>Bandejas Sensoriales</h4>
-                    <p>Fomento de la concentración y motricidad fina mediante el uso de arroz teñido y legumbres.</p>
+
+                <!-- Proyecto 2 -->
+                <div class="proyecto">
+                    <img src="https://via.placeholder.com/400x250?text=Foto+Masa+de+Sal" alt="Manos moldeando masa">
+                    <div class="proyecto-info">
+                        <h3>👩‍🍳 Pequeños Panaderos</h3>
+                        <p>Esta semana trabajamos la motricidad fina haciendo masa de sal. Hemos mezclado harina, agua y sal (¡qué pegajoso!) y hemos moldeado animalitos que luego pintaremos.</p>
+                    </div>
                 </div>
-                <div class="tarjeta-actividad">
-                    <img src="https://via.placeholder.com/300x200?text=M%C3%BAsica+y+Movimiento" alt="Instrumentos musicales">
-                    <h4>Música y Movimiento</h4>
-                    <p>Introducción de instrumentos de percusión básicos durante el Morgenkreis.</p>
+
+                <!-- Proyecto 3 -->
+                <div class="proyecto">
+                    <img src="https://via.placeholder.com/400x250?text=Foto+Experimento+Luz" alt="Mesa de luz">
+                    <div class="proyecto-info">
+                        <h3>✨ La Mesa de Luz</h3>
+                        <p>Hemos inaugurado la mesa de luz. Con piezas translúcidas de colores hemos estado creando formas geométricas y viendo cómo se mezclan los colores primarios.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- SECCIÓN: RECURSOS PARA FAMILIAS -->
+        <div id="canciones" class="seccion">
+            <h2>Rincón de las Familias 🏡</h2>
+            <p>Muchas veces los niños llegan a casa cantando canciones que no conocéis. ¡Aquí os dejamos nuestras favoritas para que cantéis con ellos!</p>
+            
+            <ul class="recursos-list">
+                <li>
+                    <strong>🎵 Canción de los buenos días:</strong> 
+                    <em>"Guten Morgen, Guten Morgen, wir winken uns zu..."</em> (Podéis cantarla en casa para empezar el día con energía).
+                </li>
+                <li>
+                    <strong>👕 Recordatorio de Ropa:</strong> 
+                    Por favor, recordad traer pantalones de barro (Matschhose) y botas de agua, ¡la semana que viene pronostican lluvia y nos encanta saltar en los charcos!
+                </li>
+                <li>
+                    <strong>📚 Cuento del mes:</strong> 
+                    Estamos leyendo "La pequeña oruga glotona" (Die kleine Raupe Nimmersatt). Es genial para repasar los días de la semana y los alimentos.
+                </li>
+            </ul>
+        </div>
 
     </div>
 
     <footer>
-        <h2>¿Hablamos?</h2>
-        <p>Me encantaría formar parte de vuestro equipo y contribuir al bienestar de los niños en su Kita.</p>
-        <p>Email: <a href="mailto:tuemail@ejemplo.com" style="color: white; text-decoration: underline;">tuemail@ejemplo.com</a> | Teléfono: +49 123 456 789</p>
-        <a href="mailto:tuemail@ejemplo.com" class="btn-contacto">Enviar un mensaje</a>
+        <p>Hecho con mucho cariño por el equipo educativo del Grupo Las Abejitas 🐝</p>
+        <p>Para cualquier duda pedagógica, podéis contactarnos a través de la app de la Kita o en nuestro correo: educadores@ejemplokita.de</p>
     </footer>
 
 </body>
