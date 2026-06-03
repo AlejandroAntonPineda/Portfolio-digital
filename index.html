@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portfolio - Kita</title>
+    <title>Generador de Portfolio - Kita</title>
     <style>
-        /* Diseño estilo "Scrapbook" o Carpeta de Recuerdos */
+        /* Diseño visual de la carpeta */
         :root {
-            --color-fondo: #f4ede4; /* Papel crema */
-            --color-cinta: #ff6b6b; /* Rojo suave */
+            --color-fondo: #f4ede4;
+            --color-cinta: #ff6b6b;
             --color-polaroid: #ffffff;
             --color-texto: #4a4a4a;
             --fuente-titulo: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
@@ -26,6 +26,27 @@
             line-height: 1.6;
         }
 
+        .controles {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-imprimir {
+            background-color: #2EC4B6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+
+        .btn-imprimir:hover {
+            background-color: #25a195;
+        }
+
         .carpeta {
             max-width: 850px;
             margin: 0 auto;
@@ -36,16 +57,11 @@
             position: relative;
         }
 
-        /* Efecto de encuadernación a la izquierda */
-        .carpeta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 20px;
-            bottom: 0;
-            width: 2px;
-            background: #e0d5c1;
-            border-left: 2px dashed #c4b69c;
+        /* Indicador visual de que un área es editable */
+        [contenteditable="true"]:hover {
+            background-color: #fff9c4;
+            outline: 1px dashed #fbc02d;
+            cursor: text;
         }
 
         .portada {
@@ -62,6 +78,12 @@
             margin: 10px 0;
         }
 
+        .foto-container {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+
         .foto-perfil {
             width: 200px;
             height: 200px;
@@ -70,6 +92,25 @@
             border: 8px solid var(--color-polaroid);
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             transform: rotate(-3deg);
+        }
+
+        .input-foto {
+            display: none;
+        }
+
+        .btn-subir {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff9f1c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            white-space: nowrap;
         }
 
         h2 {
@@ -81,7 +122,6 @@
             padding-bottom: 10px;
         }
 
-        /* Estilo para fotos tipo Polaroid */
         .grid-polaroid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -96,16 +136,10 @@
             text-align: center;
             font-family: var(--fuente-titulo);
             transform: rotate(2deg);
-            transition: transform 0.3s;
         }
 
         .polaroid:nth-child(even) {
             transform: rotate(-2deg);
-        }
-
-        .polaroid:hover {
-            transform: scale(1.05) rotate(0deg);
-            z-index: 10;
         }
 
         .polaroid img {
@@ -114,7 +148,6 @@
             object-fit: cover;
         }
 
-        /* Historias de Aprendizaje (Lerngeschichten) */
         .lerngeschichte {
             background-color: #fdfae1;
             padding: 25px;
@@ -124,20 +157,6 @@
             border-radius: 0 10px 10px 0;
         }
 
-        .lerngeschichte h3 {
-            margin-top: 0;
-            color: #f0932b;
-            font-family: var(--fuente-titulo);
-        }
-
-        .firma-educador {
-            text-align: right;
-            font-style: italic;
-            color: #777;
-            margin-top: 15px;
-        }
-
-        /* Citas del niño (O-Töne) */
         .cita-nino {
             background: #e3f2fd;
             padding: 20px;
@@ -150,128 +169,130 @@
             color: #1565c0;
         }
 
-        .cita-nino::before {
-            content: '“';
-            font-size: 4rem;
-            color: rgba(21, 101, 192, 0.2);
-            position: absolute;
-            top: -10px;
-            left: 20px;
-        }
-
-        /* Lista "Das kann ich schon" */
-        .lista-logros {
-            list-style: none;
-            padding: 0;
-        }
-
         .lista-logros li {
             padding: 10px 0;
             font-size: 1.2rem;
             border-bottom: 1px dashed #ccc;
         }
 
-        .lista-logros li::before {
-            content: '⭐';
-            margin-right: 10px;
-        }
-
-        .nota-privacidad {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #999;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+        /* Estilos para cuando se imprime o se guarda como PDF */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .carpeta {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            .controles, .btn-subir {
+                display: none !important; /* Oculta botones al imprimir */
+            }
+            [contenteditable="true"]:hover {
+                background-color: transparent;
+                outline: none;
+            }
         }
     </style>
 </head>
 <body>
 
+    <div class="controles">
+        <button class="btn-imprimir" onclick="window.print()">🖨️ Guardar como PDF / Imprimir</button>
+        <p style="font-size: 0.9rem; color: #666;">Haz clic en cualquier texto para editarlo. Usa los botones naranjas para cambiar las fotos.</p>
+    </div>
+
     <div class="carpeta">
         
         <!-- PORTADA -->
         <div class="portada">
-            <img src="https://via.placeholder.com/200x200?text=Foto+del+Niño" alt="Foto de Leo" class="foto-perfil">
-            <h1>Este soy yo: Leo</h1>
-            <p><strong>Mi grupo:</strong> Las Abejitas 🐝</p>
-            <p><strong>Educadora que me acompaña:</strong> María</p>
-            <p><em>Este es mi libro mágico. Aquí guardamos todo lo que voy descubriendo en la Kita.</em></p>
+            <div class="foto-container">
+                <img id="img-perfil" src="https://via.placeholder.com/200x200?text=Sube+una+foto" alt="Foto del Niño" class="foto-perfil">
+                <input type="file" id="input-perfil" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-perfil')">
+                <label for="input-perfil" class="btn-subir">📷 Cambiar foto</label>
+            </div>
+            
+            <h1 contenteditable="true">Este soy yo: [Nombre del niño]</h1>
+            <p><strong>Mi grupo:</strong> <span contenteditable="true">Las Abejitas 🐝</span></p>
+            <p><strong>Educador/a:</strong> <span contenteditable="true">María (Kita Leipzig)</span></p>
+            <p contenteditable="true"><em>Este es mi libro mágico. Aquí guardamos todo lo que voy descubriendo.</em></p>
         </div>
 
         <!-- SECCIÓN 1: DAS BIN ICH & MEINE FAMILIE -->
         <section>
             <h2>Mi Familia y Yo (Das bin ich & Meine Familie)</h2>
-            <p>¡Hola! Me llamo Leo. Tengo 3 años. Lo que más me gusta hacer en la Kita es jugar con los bloques magnéticos y montar en el Bobby Car.</p>
+            <p contenteditable="true">¡Hola! Me llamo [Nombre]. Tengo [X] años. Lo que más me gusta hacer en la Kita es...</p>
             
             <div class="grid-polaroid">
                 <div class="polaroid">
-                    <img src="https://via.placeholder.com/200x180?text=Foto+Familiar" alt="Mi familia">
-                    <p>Mamá, Papá y yo en el parque</p>
+                    <div class="foto-container">
+                        <img id="img-fam1" src="https://via.placeholder.com/200x180?text=Foto+1" alt="Foto 1">
+                        <input type="file" id="input-fam1" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-fam1')">
+                        <label for="input-fam1" class="btn-subir">📷 Cambiar</label>
+                    </div>
+                    <p contenteditable="true">Mamá, Papá y yo</p>
                 </div>
                 <div class="polaroid">
-                    <img src="https://via.placeholder.com/200x180?text=Foto+Mascota" alt="Mi perro">
-                    <p>Mi perro Bruno</p>
+                    <div class="foto-container">
+                        <img id="img-fam2" src="https://via.placeholder.com/200x180?text=Foto+2" alt="Foto 2">
+                        <input type="file" id="input-fam2" class="input-foto" accept="image/*" onchange="cargarImagen(event, 'img-fam2')">
+                        <label for="input-fam2" class="btn-subir">📷 Cambiar</label>
+                    </div>
+                    <p contenteditable="true">Mi juguete favorito</p>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 2: LERNGESCHICHTEN (Historias de aprendizaje) -->
+        <!-- SECCIÓN 2: LERNGESCHICHTEN -->
         <section>
             <h2>Mis Historias de Aprendizaje (Lerngeschichten)</h2>
-            <p><em>(Textos escritos por los educadores dirigidos directamente al niño, documentando sus procesos).</em></p>
 
             <div class="lerngeschichte">
-                <h3>El gran constructor de puentes 🌉</h3>
-                <p><strong>Fecha:</strong> 15 de Octubre de 2023</p>
-                <p>Querido Leo,</p>
-                <p>Hoy te he estado observando en el rincón de construcción. Estabas muy concentrado intentando hacer un puente para que pasaran tus coches. Al principio, los bloques de madera se caían porque ponías coches muy pesados encima. Noté que te frustraste un poquito, pero no te rendiste.</p>
-                <p>Fuiste a buscar bloques más anchos para la base y dijiste: "¡Ahora es fuerte!". Y tenías razón, tu coche de bomberos cruzó sin problemas. Me ha encantado ver tu paciencia y cómo has resuelto el problema tú solito. ¡Eres un gran constructor!</p>
-                <div class="firma-educador">Tu educadora, María</div>
+                <h3 contenteditable="true">Título de la historia 🌟</h3>
+                <p><strong>Fecha:</strong> <span contenteditable="true">Día / Mes / Año</span></p>
+                <p contenteditable="true">Querido [Nombre],</p>
+                <p contenteditable="true">Hoy te he estado observando mientras jugabas en... (Escribe aquí la historia de aprendizaje centrada en los recursos y logros del niño).</p>
+                <p contenteditable="true">Me ha encantado ver cómo solucionaste el problema. ¡Eres un/a gran investigador/a!</p>
+                <div class="firma-educador" contenteditable="true">Tu educadora, [Nombre]</div>
             </div>
         </section>
 
-        <!-- SECCIÓN 3: O-TÖNE (Lo que dice el niño) -->
+        <!-- SECCIÓN 3: O-TÖNE -->
         <section>
             <h2>Mis Palabras (Was ich gesagt habe)</h2>
-            <p>A veces digo cosas muy divertidas o interesantes que mis educadoras apuntan para no olvidarlas.</p>
-            
             <div class="cita-nino">
-                "Las lombrices no tienen manos, por eso se abrazan con todo el cuerpo."<br>
-                <span style="font-size: 0.9rem; color: #666;">- Buscando bichos en el jardín, Mayo 2023</span>
+                <span contenteditable="true">"Escribe aquí alguna frase literal y divertida que haya dicho el niño."</span><br>
+                <span style="font-size: 0.9rem; color: #666;" contenteditable="true">- Contexto o fecha (ej. En el jardín, Mayo)</span>
             </div>
         </section>
 
-        <!-- SECCIÓN 4: DAS KANN ICH SCHON (Mis hitos) -->
+        <!-- SECCIÓN 4: DAS KANN ICH SCHON -->
         <section>
             <h2>¡Mira lo que ya sé hacer! (Das kann ich schon)</h2>
             
-            <ul class="lista-logros">
-                <li>¡Ya sé ponerme los zapatos yo solo (aunque a veces van al revés)!</li>
-                <li>Me sirvo agua en el vaso durante el desayuno sin derramar casi nada.</li>
-                <li>Reconozco la primera letra de mi nombre: la "L".</li>
-                <li>Consigo subir hasta lo más alto de la estructura de escalada en el patio.</li>
+            <ul class="lista-logros" contenteditable="true">
+                <li>Escribe aquí un logro reciente...</li>
+                <li>Escribe otro logro aquí...</li>
+                <li>Otro hito superado...</li>
             </ul>
         </section>
 
-        <!-- SECCIÓN 5: MEINE KUNSTWERKE (Mis obras de arte) -->
-        <section>
-            <h2>Mis Obras de Arte (Meine Kunstwerke)</h2>
-            <p>Aquí guardamos fotos de mis manualidades y dibujos favoritos.</p>
-            
-            <div class="grid-polaroid">
-                <div class="polaroid">
-                    <img src="https://via.placeholder.com/200x180?text=Pintura+de+dedos" alt="Mi dibujo">
-                    <p>Pintura con los dedos (Azul y Amarillo hacen Verde)</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="nota-privacidad">
-            Documento pedagógico confidencial. Creado a través de observación estructurada según el marco pedagógico.
-        </div>
-
     </div>
+
+    <!-- Script para que las imágenes se actualicen al subirlas -->
+    <script>
+        function cargarImagen(event, idImagen) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById(idImagen);
+                output.src = reader.result;
+            };
+            if(event.target.files[0]){
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+    </script>
 
 </body>
 </html>
